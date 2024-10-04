@@ -1,6 +1,9 @@
 import altair as alt
 import pandas as pd
 import streamlit as st
+import requests
+import json
+from langchain_community.utilities import SQLDatabase
 
 # Show the page title and description.
 st.set_page_config(page_title="Movies dataset", page_icon="🎬")
@@ -14,12 +17,21 @@ st.write(
 )
 
 
+url = 'https://f4wo0au9r5.execute-api.us-east-1.amazonaws.com/default/claude-chat'
+myobj = {"messages":[{"role":"user","content":"hi"}]}
+
+x = requests.post(url, json = myobj)
+st.write(x.content.decode("utf-8").strip())
+
 # Load the data from a CSV. We're caching this so it doesn't reload every time the app
 # reruns (e.g. if the user interacts with the widgets).
 @st.cache_data
 def load_data():
-    df = pd.read_csv("data/movies_genres_summary.csv")
-    return df
+    #df = pd.read_csv("data/movies_genres_summary.csv")
+    #return df
+
+    db = SQLDatabase.from_uri("sqlite:///data//Chinook.db")
+    return db
 
 
 df = load_data()
