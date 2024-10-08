@@ -106,4 +106,5 @@ if st.session_state['api_key']:
         st.dataframe(
         df,
         hide_index=True, use_container_width=True)
+        st.bar_chart(df)
         con.close()
