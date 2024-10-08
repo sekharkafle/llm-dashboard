@@ -109,7 +109,8 @@ if st.session_state['api_key']:
         
         df_numerical_features = df.select_dtypes(include='number')
         df_categorical_features = df.select_dtypes(include='category')
-        st.write(df_numerical_features + "," + df_categorical_features)
+        st.write(df_numerical_features)
+        st.write(df_categorical_features)
         if len(df_numerical_features) > 1 and len(df_categorical_features) > 1:
             st.bar_chart(df, x=df_categorical_features[0], y=df_numerical_features)
         con.close()
