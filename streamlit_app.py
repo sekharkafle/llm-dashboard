@@ -106,5 +106,6 @@ if st.session_state['api_key']:
         st.dataframe(
         df,
         hide_index=True, use_container_width=True)
-        st.bar_chart(df)
+        df2 = df.reset_index(drop=True, inplace=True)
+        st.bar_chart(df2)
         con.close()
