@@ -105,5 +105,5 @@ if st.session_state['api_key']:
         df = pd.read_sql_query(sql_response, con)
         st.dataframe(
         df,
-        use_container_width=True)
+        hide_index=True, use_container_width=True)
         con.close()
