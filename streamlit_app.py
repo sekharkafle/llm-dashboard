@@ -15,7 +15,6 @@ if 'api_key' not in st.session_state:
     st.session_state['api_key'] = None
 if "mode" not in st.session_state:
     st.session_state['mode'] = "Dashboard"
-st.session_state['api_key'] = "test"
 if not st.session_state.api_key:
     #with st.sidebar:
     api_key=st.text_input("Enter password to get started:", type="password")
